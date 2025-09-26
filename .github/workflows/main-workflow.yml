@@ -26,4 +26,3 @@ jobs:
       run: |
         echo "Build completed successfully"
         ls -la test_payment_mode
-
