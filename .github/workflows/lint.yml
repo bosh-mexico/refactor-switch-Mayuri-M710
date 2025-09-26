@@ -32,5 +32,5 @@ jobs:
     - name: clang-tidy check
       run: |
         # Create a compile commands database for clang-tidy
-        echo '[{"directory": ".", "command": "g++ -std=c++17 -I. StringCalculator.cpp test_StringCalculator.cpp", "file": "StringCalculator.cpp"}, {"directory": ".", "command": "g++ -std=c++17 -I. test_StringCalculator.cpp StringCalculator.cpp", "file": "test_StringCalculator.cpp"}]' > compile_commands.json
-        clang-tidy StringCalculator.cpp test_StringCalculator.cpp -- -std=c++17 -I.
+        echo '[{"directory": ".", "command": "g++ -std=c++17 -I. main.cpp test_payment_mode.cpp", "file": "main.cpp"}, {"directory": ".", "command": "g++ -std=c++17 -I. test_payment_mode.cpp main.cpp", "file": "test_payment_mode.cpp"}]' > compile_commands.json
+        clang-tidy main.cpp test_payment_mode.cpp -- -std=c++17 -I.
