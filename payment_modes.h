@@ -1,7 +1,7 @@
 #pragma once
 #include "processor_factory.h"
 #include <memory>
-#include <sstream>  // for string formatting
+#include <sstream>
 #include <string>
 
 // Shared formatter (DRY)
@@ -12,12 +12,11 @@ inline std::string formatMessage(const std::string& mode, double amount) {
 }
 
 // Macro for self-registration (reduces boilerplate)
-#define REGISTER_PROCESSOR(ClassName, ModeName)                \
-    static bool ClassName##_registered = [] {                  \
-        ProcessorFactory::registerProcessor(                   \
-            ModeName, [](){ return std::make_unique<ClassName>(); } \
-        );                                                     \
-        return true;                                           \
+#define REGISTER_PROCESSOR(ClassName, ModeName) \
+    static bool ClassName##_registered = [] { \
+        ProcessorFactory::registerProcessor( \
+            ModeName, []() { return std::make_unique<ClassName>(); }) ; \
+        return true; \
     }();
 
 // ---------------- PAYMENT PROCESSORS ----------------
