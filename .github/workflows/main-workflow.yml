@@ -20,9 +20,10 @@ jobs:
         g++ -std=c++17 -Wall -Wextra -O2 test_payment_mode.cpp main.cpp -o test_payment_mode
       
     - name: run tests
-      run: ./test_stringcalculator
+      run: ./test_payment_mode
 
     - name: verify build artifacts
       run: |
         echo "Build completed successfully"
-        ls -la test_stringcalculator
+        ls -la test_payment_mode
+
