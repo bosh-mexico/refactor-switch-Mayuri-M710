@@ -1,0 +1,28 @@
+name: Build and Run
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: install build tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential g++
+
+    - name: build with g++
+      run: |
+        g++ -std=c++17 -Wall -Wextra -O2 test_StringCalculator.cpp StringCalculator.cpp -o test_stringcalculator
+      
+    - name: run tests
+      run: ./test_stringcalculator
+
+    - name: verify build artifacts
+      run: |
+        echo "Build completed successfully"
+        ls -la test_stringcalculator
