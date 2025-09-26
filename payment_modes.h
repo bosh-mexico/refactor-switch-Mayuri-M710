@@ -1,6 +1,8 @@
 #pragma once
 #include "processor_factory.h"
+#include <memory>
 #include <sstream>  // for string formatting
+#include <string>
 
 // Shared formatter (DRY)
 inline std::string formatMessage(const std::string& mode, double amount) {
@@ -22,9 +24,9 @@ inline std::string formatMessage(const std::string& mode, double amount) {
 
 // PayPal
 class PayPalProcessor : public PaymentProcessor {
-public:
+ public:
     std::string process(double amount) const override {
-        // TODO: Integrate with PayPal API
+        // TODO(fef2kor): Integrate with PayPal API
         return formatMessage("PayPal", amount);
     }
 };
@@ -32,9 +34,9 @@ REGISTER_PROCESSOR(PayPalProcessor, "PayPal")
 
 // GooglePay
 class GooglePayProcessor : public PaymentProcessor {
-public:
+ public:
     std::string process(double amount) const override {
-        // TODO: Integrate with GooglePay API
+        // TODO(fef2kor): Integrate with GooglePay API
         return formatMessage("GooglePay", amount);
     }
 };
@@ -42,9 +44,9 @@ REGISTER_PROCESSOR(GooglePayProcessor, "GooglePay")
 
 // CreditCard
 class CreditCardProcessor : public PaymentProcessor {
-public:
+ public:
     std::string process(double amount) const override {
-        // TODO: Integrate with Credit Card API
+        // TODO(fef2kor): Integrate with Credit Card API
         return formatMessage("CreditCard", amount);
     }
 };

@@ -2,11 +2,14 @@
 #include "payment_modes.h"
 //#include <gtest/gtest.h>
 #include <memory>
+#include <string>
 
 // Utility: get processor safely
 std::string processPayment(const std::string& mode, double amount) {
     auto processor = ProcessorFactory::create(mode);
-    if (!processor) return "Invalid";
+    if (!processor) {
+        return "Invalid";
+    }
     return processor->process(amount);
 }
 
@@ -39,6 +42,6 @@ TEST(CheckoutTest, InvalidPaymentMode) {
 TEST(CheckoutTest, PlaceholderLogicStillWorks) {
     // For now just ensure PayPal prints expected placeholder confirmation
     std::string result = processPayment("PayPal", 42.42);
-    EXPECT_NE(result.find("PayPal"), std::string::npos); // contains "PayPal"
-    EXPECT_NE(result.find("42.42"), std::string::npos);  // contains amount
+    EXPECT_NE(result.find("PayPal"), std::string::npos);  // contains "PayPal"
+    EXPECT_NE(result.find("42.42"), std::string::npos);   // contains amount
 }

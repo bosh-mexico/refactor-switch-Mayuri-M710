@@ -1,13 +1,18 @@
 #pragma once
 #include "payment_processor.h"
+#include <memory>
+#include <unordered_map>
+#include <functional>
+#include <string>
+#include <utility>
 
 // Factory with self-registration
 class ProcessorFactory {
-public:
+ public:
     using Creator = std::function<std::unique_ptr<PaymentProcessor>()>;
 
     static void registerProcessor(const std::string& name, Creator creator) {
-        getRegistry()[name] = std::move(creator);
+        getRegistry()[name] = std::move(creator);  //  At least two spaces is best between code and comments
     }
 
     static std::unique_ptr<PaymentProcessor> create(const std::string& name) {
@@ -16,10 +21,10 @@ public:
         if (it != reg.end()) {
             return it->second();
         }
-        return nullptr; // invalid mode
+        return nullptr;  // invalid mode
     }
 
-private:
+ private:
     static std::unordered_map<std::string, Creator>& getRegistry() {
         static std::unordered_map<std::string, Creator> registry;
         return registry;

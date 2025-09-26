@@ -1,5 +1,6 @@
 #include "payment_modes.h"
 #include <iostream>
+#include <string>
 
 int main() {
     double amount;
@@ -13,10 +14,11 @@ int main() {
     std::getline(std::cin, modeStr);
 
     auto processor = ProcessorFactory::create(modeStr);
-    if (processor)
+    if (processor) {
         std::cout << processor->process(amount) << '\n';
-    else
+    } else {
         std::cout << "Invalid payment mode selected!\n";
+    }
 
     return 0;
 }

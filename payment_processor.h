@@ -6,7 +6,7 @@
 
 // Abstract base class
 class PaymentProcessor {
-public:
+ public:
     virtual ~PaymentProcessor() = default;
     virtual std::string process(double amount) const = 0;
 };
