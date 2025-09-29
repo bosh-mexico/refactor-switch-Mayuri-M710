@@ -13,16 +13,25 @@ jobs:
     - name: install build tools
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential g++
+        sudo apt-get install -y build-essential g++ cmake
 
-    - name: build with g++
+    - name: configure with cmake
       run: |
-        g++ -std=c++17 -Wall -Wextra -O2 test_payment_mode.cpp main.cpp -o test_payment_mode
+        mkdir build
+        cd build
+        cmake ..
+      
+    - name: build project
+      run: |
+        cd build
+        cmake --build .
       
     - name: run tests
-      run: ./test_payment_mode
+      run: |
+        cd build
+        ctest --output-on-failure
 
     - name: verify build artifacts
       run: |
         echo "Build completed successfully"
-        ls -la test_payment_mode
+        ls -la build/
