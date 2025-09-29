@@ -1,8 +1,10 @@
 #pragma once
-#include "processor_factory.h"
+
 #include <memory>
 #include <sstream>
 #include <string>
+
+#include "processor_factory.h"
 
 // Shared formatter (DRY)
 inline std::string formatMessage(const std::string& mode, double amount) {

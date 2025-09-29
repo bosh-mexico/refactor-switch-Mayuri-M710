@@ -1,6 +1,6 @@
-#include "payment_modes.h"
 #include <iostream>
 #include <string>
+#include "payment_modes.h"
 
 int main() {
     double amount;
