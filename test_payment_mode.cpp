@@ -1,8 +1,9 @@
 #include <memory>
 #include <string>
 #include <gtest/gtest.h>
-#include "processor_factory.h"
+
 #include "payment_modes.h"
+#include "processor_factory.h"
 
 // Utility: get processor safely
 std::string processPayment(const std::string& mode, double amount) {
