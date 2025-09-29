@@ -12,7 +12,8 @@ class ProcessorFactory {
     using Creator = std::function<std::unique_ptr<PaymentProcessor>()>;
 
     static void registerProcessor(const std::string& name, Creator creator) {
-        getRegistry()[name] = std::move(creator);  //  At least two spaces is best between code and comments
+        // At least two spaces is best between code and comments
+        getRegistry()[name] = std::move(creator);
     }
 
     static std::unique_ptr<PaymentProcessor> create(const std::string& name) {

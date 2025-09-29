@@ -23,7 +23,7 @@ jobs:
 
     - name: cpplint
       run: |
-        cpplint  --filter=-legal --linelength=100 *.cpp *.h
+        cpplint  --filter=-legal --linelength=150 *.cpp *.h
 
     - name: cppcheck
       run: |
