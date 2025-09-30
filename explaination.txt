@@ -1,0 +1,45 @@
+Payment Processing Flow Chart (Example: PayPal)
+
+[Program Start]
+      |
+      v
+[REGISTER_PROCESSOR Macro]
+      |
+      v
+ProcessorFactory::registerProcessor("PayPal", factory function)
+      |
+      v
+[User Requests Payment]
+      |
+      v
+ProcessorFactory::create("PayPal")
+      |
+      v
+Registry Lookup for "PayPal"
+      |
+      v
+Found? ----No----> [Return nullptr]
+  |
+ Yes
+  |
+  v
+Call factory function -> std::make_unique<PayPalProcessor>()
+      |
+      v
+[PayPalProcessor Object Created]
+      |
+      v
+Call PayPalProcessor::process(amount)
+      |
+      v
+formatMessage("PayPal", amount)
+      |
+      v
+[Return Result String]
+
+Summary:
+- Registration happens at startup via macro.
+- User requests a payment processor by name.
+- Factory creates the processor if registered.
+- Processor’s process method is called.
+- Result string is returned.
