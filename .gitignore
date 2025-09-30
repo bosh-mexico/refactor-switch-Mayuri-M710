@@ -1,0 +1,30 @@
+# CMake build files
+*.cmake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+_deps/
+compile_commands.json
+
+# Build directories
+build/
+out/
+
+# Visual Studio files
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.lib
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# IDE files
+.vs/
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
